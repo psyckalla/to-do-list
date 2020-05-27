@@ -13,18 +13,24 @@ function watchAddForm() {
 };
 
 function watchDeleteForm(id) {
-    $('#'+id).submit(event => {
+    $('form#'+id).submit(event => {
         event.preventDefault();
-        $(event.target).addClass('hidden');
-        //const itemToDelete = event.target.id;
-        //deleteFromList(itemToDelete);
+        const apiURL = `https://api.todoist.com/rest/v1/tasks/${id}`
+        $('form#'+id).addClass('hidden');
+        fetchAPI('DELETE', apiURL, hideItem);
     });
 };
+
+function loadActiveItems() {
+    const apiURL = 'https://api.todoist.com/rest/v1/tasks';
+    fetch('GET', apiURL, displayMultipleItems);
+
+}
 
 function addItems(task, priority) {
     const raw = JSON.stringify({"content":`${task}`,"project_id":parseInt(priority, 10)});
     const url = 'https://api.todoist.com/rest/v1/tasks'
-    fetchAPI('Post', url, raw, displaySingleItems);
+    fetchAPI('POST', url, displaySingleItems, raw);
 }
 
 function displaySingleItems(responseJson) {
@@ -32,33 +38,44 @@ function displaySingleItems(responseJson) {
         `<form class="item-list" id=${responseJson.id}>
         <label>${responseJson.content}<input type=checkbox></label>
         <input type="submit" value="Delete"></form>`)
-    $(watchDeleteForm(`${responseJson.project_id}`));
+    $(watchDeleteForm(`${responseJson.id}`));
 }
 
-function fetchAPI(method, url, raw, howToDisplay) {
+function displayMultipleItems() {
+    console.log(responseJson);
+
+}
+
+function hideItem() {
+
+}
+
+function fetchAPI(method, url, howToDisplay, raw) {
     const myHeaders = new Headers();
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", "Bearer a8a843df895aadf67a2decc015a6fdf68c60045c");
 
     let library = {};
     const requestOptions = {
-        method: 'POST',
+        method: method,
         headers: myHeaders,
         body: raw,
         redirect: 'follow'
     };
 
     const responseJson = fetch(url, requestOptions)
-    .then(response => response.json())
+    .then(response => { if (response.status === 200) {
+        return response.json()
+    } else if (response.status === 204) {
+        howToDisplay(response);
+    }} )
     .then(responseJson => howToDisplay(responseJson))
     .catch(error => console.log('error', error));
 }
 
-
-
-
 function generateAllFunctions() {
     watchAddForm();
+    loadActiveItems();
 };
 
 $(generateAllFunctions());
