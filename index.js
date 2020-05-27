@@ -23,7 +23,7 @@ function watchDeleteForm(id) {
 
 function loadActiveItems() {
     const apiURL = 'https://api.todoist.com/rest/v1/tasks';
-    fetch('GET', apiURL, displayMultipleItems);
+    fetchAPI('GET', apiURL, displayMultipleItems);
 
 }
 
@@ -34,6 +34,7 @@ function addItems(task, priority) {
 }
 
 function displaySingleItems(responseJson) {
+    console.log(responseJson[0]);
     $(`article.${responseJson.project_id}`).append(
         `<form class="item-list" id=${responseJson.id}>
         <label>${responseJson.content}<input type=checkbox></label>
@@ -41,8 +42,15 @@ function displaySingleItems(responseJson) {
     $(watchDeleteForm(`${responseJson.id}`));
 }
 
-function displayMultipleItems() {
+function displayMultipleItems(responseJson) {
     console.log(responseJson);
+    for (let i = 0; i < responseJson.length; i++) {
+        $(`article.${responseJson[i].project_id}`).append(
+            `<form class="item-list" id=${responseJson[i].id}>
+            <label>${responseJson[i].content}<input type=checkbox></label>
+            <input type="submit" value="Delete"></form>`)
+        $(watchDeleteForm(`${responseJson[i].id}`));
+    };
 
 }
 

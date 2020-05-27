@@ -4,31 +4,57 @@
     padding: 0;
 }
 
-/* form.item-list.input[type="submit"] {
-	display: inline;
-	color: black;
-	background: black;
-} */
+h1 {
+	text-align: center;
+	font-family: 'Noto Sans TC', serif;
+	margin: 20px;
+	border: 10px groove rgb(151, 32, 151);
+}
+
+h2 {
+	font-family: 'Noto Sans TC', serif;
+}
+
+main {
+	font-family: Roboto, serif;
+}
 
 .hidden {
 	display: none;
 }
 
+input#add-task {
+	border: none;
+	border-bottom: 0.125rem solid;
+	width: 100%;
+	height: 2rem;
+	font-size: 16px;
+	padding-left: 0.875rem;
+	line-height: 147.6%;
+	padding-top: 0.825rem;
+	padding-bottom: 0.5rem;
+	color: black;
+	transition: top .2s;
+
+}
+
+input#add-task:focus {
+	outline: none;
+}
+
 @media screen and (max-width: 600px) {
 	.ac-container{
-		width: 400px;
+		width: 600px;
 		margin: 10px auto 30px auto;
 	}
 
 	.ac-container label{
-		font-family: 'BebasNeueRegular', 'Arial Narrow', Arial, sans-serif;
 		padding: 5px 20px;
 		position: relative;
 		z-index: 20;
 		display: block;
 		height: 30px;
 		cursor: pointer;
-		/* color: #777; */
 		text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
 		line-height: 33px;
 		font-size: 19px;
