@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@900&family=Roboto&display=swap" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="style.css" rel="stylesheet" type="text/css">
+    </head>
+    <body>
+        <header>
+            <h1>To Do List</h1>
+        </header>
+        <main>
+            <h2>Add Task</h2>
+            <form class="add">
+                <label for="add-task">Task Name:<input type="text" id="add-task"></label>
+                <label for="importance">Task Priority:</label>
+                <select name="importance" id="importance">
+                    <option value="2237014803">Important and Urgent</option>
+                    <option value="2237015038">Important but not Urgent</button> Unimportant</option>
+                    <option value="2237015068">Not Important but Urgent</option>
+                    <option value="2237015099">Not Urgent and Not Important</option>
+                </select>
+                <label>Thing <input type="submit" value="Submit"></label>
+
+            </form>
+            <section class="ac-container">
+                <div class="boxes-one-and-two box-one">
+                    <input id="ac-1" name="accordion-1" type="checkbox" checked/>
+                    <label for="ac-1">Important and Urgent</label>
+                    <article class="ac-medium one 2237014803">
+                    
+                    </article>
+                </div>
+                <div class="boxes-one-and-two box-two">
+                    <input id="ac-2" name="accordion-1" type="checkbox"/>
+                    <label for="ac-2">Important but not Urgent</label>
+                    <article class="ac-medium two 2237015038">
+                        
+                    </article>
+                </div>
+                <div class="boxes-three-and-four box-three">
+                    <input id="ac-3" name="accordion-1" type="checkbox"/>
+                    <label for="ac-3">Not Important but Urgent</label>
+                    <article class="ac-medium three 2237015068">
+                        
+                    </article>
+                </div>
+                <div class="boxes-three-and-four box-four">
+                    <input id="ac-4" name="accordion-1" type="checkbox"/>
+                    <label for="ac-4">Not Important and Not Urgent</label>
+                    <article class="ac-medium four 2237015099">
+                        
+                    </article>
+                </div>
+            </section>
+        </main>
+        <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
+        <script src="index.js"></script>
+    </body>
+</html>
