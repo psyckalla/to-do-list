@@ -37,6 +37,22 @@ input#add-task {
 	padding-bottom: 0.5rem;
 	color: black;
 	transition: top .2s;
+}
+
+label {
+	padding-bottom: 10px;
+	margin-left: 10px;
+}
+
+label.importance {
+	padding-bottom: 10px;
+	margin: 0;
+	margin-left: 10px;
+}
+
+form.add {
+	display: flex;
+	flex-direction: column;
 
 }
 
@@ -45,17 +61,18 @@ input#add-task:focus {
 }
 
 select {
-	margin-bottom: 1em;
 	padding: 0.25em;
 	border: 0;
 	border-bottom: 2px solid black;
+	width: 50%;
+
 }
 
 select:focus {
 	outline: none;
 }
 
-.submit-button {
+input[type="submit"] {
 	box-shadow:inset 0px 1px 0px 0px #ffffff;
 	background:linear-gradient(to bottom, #ffffff 5%, #f6f6f6 100%);
 	background-color:#ffffff;
@@ -71,14 +88,30 @@ select:focus {
 	text-decoration:none;
 	text-shadow:0px 1px 0px #ffffff;
 }
-.submit-button:hover {
+input[type="submit"]:hover {
 	background:linear-gradient(to bottom, #f6f6f6 5%, #ffffff 100%);
 	background-color:#f6f6f6;
 }
-.submit-button:active {
+input[type="submit"]:active {
 	position:relative;
 	top:1px;
 }
+
+input[type="submit"]:focus {
+	outline: none;
+}
+
+input.item-list {
+	display:inline-block;
+	width: 70%;
+}
+
+label.item-list {
+	width: 70%;
+	display: inline;
+}
+
+
 
 @media screen and (max-width: 600px) {
 	.ac-container{
@@ -160,9 +193,6 @@ select:focus {
 		text-shadow: 1px 1px 1px rgba(255,255,255,0.8);
 	}
 
-	.ac-container input:checked ~ article.ac-small{
-		height: 140px;
-	}
 
 	.ac-container input:checked ~ article.ac-medium{
 		height: 180px;

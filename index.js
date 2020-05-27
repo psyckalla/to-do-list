@@ -37,7 +37,7 @@ function displaySingleItems(responseJson) {
     console.log(responseJson[0]);
     $(`article.${responseJson.project_id}`).append(
         `<form class="item-list" id=${responseJson.id}>
-        <label>${responseJson.content}<input type=checkbox></label>
+        <label><input type=checkbox>${responseJson.content}</label>
         <input type="submit" value="Delete"></form>`)
     $(watchDeleteForm(`${responseJson.id}`));
 }
@@ -47,7 +47,7 @@ function displayMultipleItems(responseJson) {
     for (let i = 0; i < responseJson.length; i++) {
         $(`article.${responseJson[i].project_id}`).append(
             `<form class="item-list" id=${responseJson[i].id}>
-            <label>${responseJson[i].content}<input type=checkbox></label>
+            <label class="item-list"><input type=checkbox>${responseJson[i].content}</label>
             <input type="submit" value="Delete"></form>`)
         $(watchDeleteForm(`${responseJson[i].id}`));
     };
