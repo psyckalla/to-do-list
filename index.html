@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@900&family=Roboto&display=swap" rel="stylesheet">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -12,48 +12,53 @@
         <main>
             <h2>Add Task</h2>
             <form class="add">
-                <label for="add-task"><input type="text" id="add-task" placeholder="Chorin' to do">Task Name</label>
-                <label for="importance" class="importance">
+                <label for="add-task">Task name:</label>
+                <input id="add-task" name="add-task" type="text" class="add"  pattern=".{1,}" required title="1 characters minimum" >
+                <label for="importance">Task Priority:</label>
                 <select name="importance" id="importance">
                     <option value="2237014803">Important and Urgent</option>
                     <option value="2237015038">Important but Not Urgent</option>
                     <option value="2237015068">Not Important but Urgent</option>
                     <option value="2237015099">Not Important and Not Urgent</option>
-                </select><br>Task Priority</label>
-               <label><input class="submit-button" type="submit"> </label>
+                </select></label>
+                <label for="submit-button"></label>
+                <input id="submit-button" name="submit-button" value="Create Task" class="add" type="submit">
+                
 
             </form>
-            <section class="ac-container">
-                <div class="boxes-one-and-two box-one">
-                    <input id="ac-1" name="accordion-1" type="checkbox" checked/>
-                    <label for="ac-1" class="ac">Important and Urgent</label>
-                    <article class="ac-medium one 2237014803">
-                    
-                    </article>
+            
+            <p id="js-error-message"></p>
+
+            <div class="boxes-one-and-two">
+                <div class="box-one">
+                    <h3>Important and Urgent</h3>
+                    <section class="js-urgent-important 2237014803 panel"></section>
+
                 </div>
-                <div class="boxes-one-and-two box-two">
-                    <input id="ac-2" name="accordion-1" type="checkbox"/>
-                    <label for="ac-2" class="ac">Important but not Urgent</label>
-                    <article class="ac-medium two 2237015038">
-                        
-                    </article>
+                <div class="box-two">
+                    <h3>Important but Not Urgent</h3>
+                    <section class="js-urgent-unimportant 2237015038 panel"></section>
+
                 </div>
-                <div class="boxes-three-and-four box-three">
-                    <input id="ac-3" name="accordion-1" type="checkbox"/>
-                    <label for="ac-3" class="ac">Not Important but Urgent</label>
-                    <article class="ac-medium three 2237015068">
-                        
-                    </article>
+
+            </div>
+            <div class="boxes-three-and-four">
+                <div class="box-three">
+                    <h3>Not Important but Urgent</h3>
+                    <section class="js-not-urgent-important 2237015068 panel"></section>
+
                 </div>
-                <div class="boxes-three-and-four box-four">
-                    <input id="ac-4" name="accordion-1" type="checkbox"/>
-                    <label for="ac-4" class="ac">Not Important and Not Urgent</label>
-                    <article class="ac-medium four 2237015099">
-                        
-                    </article>
+                <div class="box-four">
+                    <h3>Not Important and Not Urgent</h3>
+                    <section class="js-not-urgent-unimportant 2237015099 panel">
+
+                    </section>
+
                 </div>
-            </section>
+
+            </div>
         </main>
+
         <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
         <script src="index.js"></script>
     </body>
