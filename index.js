@@ -1,6 +1,5 @@
 'use strict'
 
-const CORS = 'https://cors-anywhere.herokuapp.com/';
 
 function watchAddForm() {
     $('.add').submit(event => {
@@ -31,14 +30,15 @@ function addItems(task, priority) {
     const raw = JSON.stringify({"content":`${task}`,"project_id":parseInt(priority, 10)});
     const url = 'https://api.todoist.com/rest/v1/tasks'
     fetchAPI('POST', url, displaySingleItems, raw);
+    
 }
 
 function displaySingleItems(responseJson) {
     console.log(responseJson[0]);
     $(`article.${responseJson.project_id}`).append(
         `<form class="item-list" id=${responseJson.id}>
-        <label><input type=checkbox>${responseJson.content}</label>
-        <input type="submit" value="Delete"></form>`)
+        <label class="item-list"><input class="item-list" type=checkbox>${responseJson.content}</label>
+        <input class="item-list" type="submit" value="Delete"></form>`)
     $(watchDeleteForm(`${responseJson.id}`));
 }
 
@@ -47,8 +47,8 @@ function displayMultipleItems(responseJson) {
     for (let i = 0; i < responseJson.length; i++) {
         $(`article.${responseJson[i].project_id}`).append(
             `<form class="item-list" id=${responseJson[i].id}>
-            <label class="item-list"><input type=checkbox>${responseJson[i].content}</label>
-            <input type="submit" value="Delete"></form>`)
+            <label class="item-list"><input class="item-list" type=checkbox>${responseJson[i].content}</label>
+            <input class="item-list" type="submit" value="Delete"></form>`)
         $(watchDeleteForm(`${responseJson[i].id}`));
     };
 
@@ -63,7 +63,6 @@ function fetchAPI(method, url, howToDisplay, raw) {
     myHeaders.append("Content-Type", "application/json");
     myHeaders.append("Authorization", "Bearer a8a843df895aadf67a2decc015a6fdf68c60045c");
 
-    let library = {};
     const requestOptions = {
         method: method,
         headers: myHeaders,
