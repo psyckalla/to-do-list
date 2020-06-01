@@ -18,7 +18,6 @@ function watchDeleteForm(id) {
         $('form#'+id).addClass('hidden');
         const requestOptions = buildAPIHeadersandOptions('DELETE')
         deleteAPI(apiURL, requestOptions)
-        // fetchAPI('DELETE', apiURL, hideItem);
     });
 };
 
@@ -53,11 +52,6 @@ function displayMultipleItems(responseJson) {
             <input class="item-list" type="submit" value="Delete"></form>`)
         $(watchDeleteForm(`${responseJson[i].id}`));
     };
-
-}
-
-function hideItem() {
-
 }
 
 function buildAPIHeadersandOptions(method, tasks) {
@@ -74,19 +68,14 @@ function buildAPIHeadersandOptions(method, tasks) {
     return requestOptions
 }
 
-function fetchAPI(url, requestOptions, howToDisplay) {
-    
+//takes fetch GET and POST requests and also determines how they will be displayed
 
-    const responseJson = fetch(url, requestOptions)
-    .then(response => { if (response.status === 200) {
-        return response.json()
-    } else if (response.status === 204) {
-        howToDisplay(response);
-    }} )
+function fetchAPI(url, requestOptions, howToDisplay) {
+
+    fetch(url, requestOptions)
+    .then(response => response.json())
     .then(responseJson => howToDisplay(responseJson))
     .catch(error => console.log('error', error));
-
-    return responseJson;
 }
 
 function deleteAPI(url, requestOptions) {
