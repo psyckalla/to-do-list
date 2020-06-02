@@ -7,6 +7,8 @@
 
 input[type="text"], select {
     padding:10px 20px;
+    margin: 10px;
+    
     
     border-radius:5px;
 	border:2px solid #0a0a0a;
@@ -18,6 +20,8 @@ select, input[type="checkbox"] {
 }
 
 input[type="submit"] {
+    margin: 10px;
+    margin-bottom: 20px;
     padding: 1px 5px;
     background-color:#79bbff;
     border-radius:5px;
@@ -137,10 +141,11 @@ input.add, #importance, input.history {
     border-radius: 10px;
     overflow-wrap: break-word;
     overflow-wrap: break-all;
+    
 }
 
 .box-one {
-    background: rgb(132, 233, 132);
+    background: rgb(209, 133, 133);
 }
 
 .box-two {
@@ -152,7 +157,7 @@ input.add, #importance, input.history {
 }
 
 .box-four {
-    background: rgb(209, 133, 133)
+    background: rgb(132, 233, 132)
 }
 
 p.checked {
@@ -190,7 +195,7 @@ p.checked {
     }
 
     .box-one, .box-two, .box-three, .box-four {
-        margin: 0;
+        margin: 10px;
     }
 
     .box-one {
@@ -225,8 +230,7 @@ p.checked {
     }
 
     .box-one, .box-two, .box-three, .box-four {
-        margin: 0;
-        resize: both;
+        margin: 10px;
         overflow: auto;
         width: 400px;
         min-height: 300px;

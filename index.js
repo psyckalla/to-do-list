@@ -75,7 +75,8 @@ function fetchAPI(url, requestOptions, howToDisplay) {
     fetch(url, requestOptions)
     .then(response => response.json())
     .then(responseJson => howToDisplay(responseJson))
-    .catch(error => console.log('error', error));
+    .catch(error =>{console.log('error', error);
+                alert('Error:', error)});
 }
 
 function deleteAPI(url, requestOptions) {
